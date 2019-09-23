@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+    <script src="index.js" defer></script>
+</head>
+
+<style>
+    [v-cloak] {
+        display: none
+    }
+</style>
+
+<body>
+
+    <h1>
+        Hi or Low (0-10)
+    </h1>
+    <h2>
+        with Vue.js
+    </h2>
+    <div id='app' v-cloak>
+        <p>
+            <label>Your guess:</label>
+            <input type="number" id="guess" />
+            <button id="guessBtn">Guess</button>
+        </p>
+        <p>
+            <label>Tip:</label> {{ tip }}
+        </p>
+
+        <p>Debug: {{ debug }}</p>
+    </div>
+</body>
+
+</html>
