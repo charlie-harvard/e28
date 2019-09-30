@@ -3,11 +3,12 @@ let app = new Vue({
     el: '#app',
     data: {
         tip: 'What is your guess? From 1 to 10.',
-        debug: [1,2,3,4]
+        debug: '',
     }
 })
 
-var randNum = Math.round(Math.random() * 11);
+
+let randNum = Math.round(Math.random() * 11);
 
 var guessBtn = document.querySelector("#guessBtn");
 guessBtn.addEventListener("click", guess);
