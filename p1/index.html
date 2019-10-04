@@ -22,9 +22,10 @@
     <div id='app' v-cloak>
         <p>
             <label>Your guess:</label>
-            <input type="number" id="guess" />
-            <button id="guessBtn">Guess</button>
+            <input type="number" v-model.number="myGuess"/>
+            <button v-on:click="guessNumber">Guess</button>
         </p>
+
         <p>
             <label>Tip:</label> {{ tip }}
         </p>
