@@ -9,6 +9,18 @@
     [v-cloak] {
         display: none
     }
+
+    .tooLow {
+        color: grey;
+    }
+
+    .tooHigh {
+        color: red;
+    }
+
+    .bingo {
+        color: green;
+    }
 </style>
 
 <body>
@@ -22,15 +34,30 @@
     <div id='app' v-cloak>
         <p>
             <label>Your guess:</label>
-            <input type="number" v-model.number="myGuess"/>
-            <button v-on:click="guessNumber">Guess</button>
+            <input type="number" v-model.number="myGuess" v-on:keyup.enter="guessNumber" />
+            
+            <span v-if="isBingo">
+                
+                <a href="">Play Again!</a>
+            </span>
+            <span v-else>
+                <button v-on:click="guessNumber">Guess</button>
+            </span>
         </p>
 
         <p>
-            <label>Tip:</label> {{ tip }}
+            <label>hint:</label> 
+            <span v-bind:class="{ tooLow : isTooLow, tooHigh : isTooHigh, bingo : isBingo }">
+                {{ hint }}
+            </span>
         </p>
 
-        <p>Debug: {{ debug }}</p>
+        <div v-if="guessHistory.length > 0">
+            <h3>Previous Guesses</h3>
+            <ul>
+                <li v-for="lastGuess in guessHistory"> {{ lastGuess }} </li>
+            </ul>
+        </div>
     </div>
 </body>
 
