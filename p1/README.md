@@ -1,6 +1,6 @@
 # Project 1
 + By: Chutian Gao
-+ Production URL: <http://p1.yourdomain.com>
++ Production URL: <http://p1.charlieis.me>
 
 ## Outside resources
 ### vue.js documentation
