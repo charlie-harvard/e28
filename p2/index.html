@@ -1,0 +1,55 @@
+
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+    <script src="index.js" defer></script>
+</head>
+
+<style>
+    [v-cloak] {
+        display: none
+    }
+    .real-icon {
+        width: 48px;
+        height: 48px;
+    }
+</style>
+
+<body>
+
+    <h1>
+        Slot Machine
+    </h1>
+
+    <div id='app' v-cloak>
+            <p>Your Balance: {{ balance }}</p>
+
+        <reel-row row="1" :getimgfunc="getItemImgByRowCol"></reel-row>
+        
+        <hr style="width: 146px;" align="left">
+        
+        <reel-row row="2" :getimgfunc="getItemImgByRowCol"></reel-row>
+        
+        <hr style="width: 146px;" align="left">
+        
+        <reel-row row="3" :getimgfunc="getItemImgByRowCol"></reel-row>
+
+        <p><button @click="play">Spin</button> <span v-if="isWin">You Won!</span></p>
+        
+
+        
+    </div><!-- v-cloak -->
+
+    <!-- TEMPLATE -->
+    <script type='text/x-template' id='reel-row'>
+        <div>
+            <img class="real-icon" :src="getImg(1)">
+            <img class="real-icon" :src="getImg(2)">
+            <img class="real-icon" :src="getImg(3)">
+        </div>
+    </script>
+
+</body>
+
+</html>
