@@ -1,24 +1,11 @@
-# p2
+# Project 2
++ By: Chutian Gao
++ Production URL: <http://p2.charlieis.me>
 
-## Project setup
-```
-npm install
-```
+Slot Machine Simulator
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Outside resources
+[Asset URL Handling](https://vue-loader.vuejs.org/guide/asset-url.html)
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Notes for instructor
+I created a new game instead of refactoring the game from Project 1.
