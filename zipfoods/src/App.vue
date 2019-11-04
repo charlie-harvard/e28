@@ -2,16 +2,17 @@
   <div id="app">
     <img id="logo" alt="ZipFoods Logo" src="./assets/images/zipfoods-logo.png">
     <p>ZipFoods is your one-stop-shop for convenient online grocery shopping in the greater Boston area.</p>
+    <show-products></show-products>
   </div>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
+import ShowProducts from './components/ShowProducts.vue'
 
 export default {
   name: 'app',
   components: {
-    
+    ShowProducts
   }
 }
 </script>
