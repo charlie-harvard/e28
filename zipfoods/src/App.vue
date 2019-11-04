@@ -13,6 +13,7 @@
 import ShowProducts from './components/ShowProducts.vue'
 import ShowFeatured from './components/ShowFeatured.vue'
 
+
 export default {
   name: 'app',
   components: {
