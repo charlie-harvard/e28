@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="subCompoent">
     <h2>Home</h2>
     
     <h3>Latest Feeds</h3>

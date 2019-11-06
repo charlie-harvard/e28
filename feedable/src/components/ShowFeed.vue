@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="subCompoent">
     <h2>Feed</h2>
     <p>Feed content</p>
   </div>

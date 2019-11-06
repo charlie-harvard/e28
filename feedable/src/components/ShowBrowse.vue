@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="subCompoent">
     <h2>Browse</h2>
     
     <h3>Popular Feeds</h3>
