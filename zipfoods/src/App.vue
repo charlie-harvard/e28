@@ -8,7 +8,7 @@
               <router-link :to='paths[link]' exact>{{ link }}</router-link>
           </li>
       </ul>
-  </nav>
+    </nav>
     
     <router-view></router-view>
   </div>
@@ -35,5 +35,5 @@ export default {
 </script>
 
 <style lang='scss'>
-@import './assets/css/zipfoods.scss';
+  @import './assets/css/zipfoods.scss';
 </style>

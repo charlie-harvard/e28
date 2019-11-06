@@ -7,7 +7,6 @@
     </div>
 </template>
 
-
 <script>
 import { products } from './../products.js';
 
