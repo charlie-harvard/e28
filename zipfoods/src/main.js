@@ -7,7 +7,6 @@ import ShowProducts from './components/ShowProducts.vue';
 import ShowCategories from './components/ShowCategories.vue';
 
 Vue.use(VueRouter);
-
 Vue.config.productionTip = false
 
 const routes = [
@@ -17,7 +16,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes: routes
+  mode: 'history',
+  routes: routes 
 })
 
 new Vue({
