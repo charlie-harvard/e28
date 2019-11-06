@@ -1,16 +1,14 @@
 <template>
-  <div class="hello">
+  <div>
+    <h2>Feed</h2>
+    <p>Feed content</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'ShowFeed',
   props: {
-    msg: String
   }
 }
 </script>
-
-<style scoped>
-</style>

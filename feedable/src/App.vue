@@ -1,19 +1,34 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Feedable App"/>
-    <img alt="Vue logo" src="./assets/logo.png" style="width:256px;height:256px">
+    <img alt="Feedable logo" src="./assets/logo.png" style="width:256px;height:256px" />
+
+    <nav>
+      <ul>
+        <li v-for="link in links" :key="link">
+          <router-link :to="paths[link]">{{ link }}</router-link>
+        </li>
+      </ul>
+    </nav>
+
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  name: "app",
+  components: {},
+  data: function() {
+    return {
+      links: ["home", "browse", "feed"],
+      paths: {
+        home: "/",
+        browse: "/browse",
+        feed: "/feed"
+      }
+    };
   }
-}
+};
 </script>
 
 <style>
