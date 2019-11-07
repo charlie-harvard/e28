@@ -1,8 +1,8 @@
 <template>
   <div class="subCompoent">
     <h2>Feed</h2>
-    <button v-on:click="fetchRssFeed">Get</button>
-    
+    <button v-on:click="parseRss">Get</button>
+    <h3>{{ title }}</h3>
   </div>
 </template>
 
@@ -37,7 +37,10 @@ export default {
     },
 
     parseRss: function(){
-
+      /*
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(this.rss, "text/xml");
+      this.title = xmlDoc;*/
     },
 
     validateUrl: function(str) {
