@@ -1,3 +1,4 @@
+export const engadgetRss = `
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:dc="https://purl.org/dc/elements/1.1/" xmlns:itunes="https://www.itunes.com/dtds/podcast-1.0.dtd">
 <channel>
@@ -500,3 +501,4 @@ There are smartwatches, and then there are fitness wearables. And while it&#039;
 	<dc:identifier>21|23854196</dc:identifier></item>
 </channel>
 </rss>
+`;

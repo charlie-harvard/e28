@@ -1,18 +1,21 @@
 <template>
   <div class="subCompoent">
     <h2>Feed</h2>
-    <p>{{ rssUrl }}</p>
     <button v-on:click="fetchRssFeed">Get</button>
+    
   </div>
 </template>
 
 <script>
+import { engadgetRss } from './../data/EngadgetRss.js';
+
 export default {
   name: "ShowFeed",
   props: {},
   data: function() {
     return {
-      rssUrl: "https://www.engadget.com/rss.xml",
+      rssUrl: "https://www.engadget.com/rss.xml", 
+      rss: engadgetRss,
       title: "",
       link: "",
       description: ""
@@ -20,7 +23,21 @@ export default {
   },
   methods: {
     fetchRssFeed: function() {
-     
+      /*
+      var _this = this;
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = function() {
+          if (request.readyState === 4) {
+              _this.title = request.responseText;  
+        }
+      }
+      request.open('GET', _this.rssUrl, true);
+      request.send();
+      */
+    },
+
+    parseRss: function(){
+
     },
 
     validateUrl: function(str) {
