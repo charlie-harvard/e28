@@ -14,7 +14,7 @@ export default {
   props: {},
   data: function() {
     return {
-      rssUrl: "https://www.engadget.com/rss.xml", 
+      rssUrl: "", 
       rss: engadgetRss,
       title: "",
       link: "",
@@ -23,24 +23,9 @@ export default {
   },
   methods: {
     fetchRssFeed: function() {
-      /*
-      var _this = this;
-      var request = new XMLHttpRequest();
-      request.onreadystatechange = function() {
-          if (request.readyState === 4) {
-              _this.title = request.responseText;  
-        }
-      }
-      request.open('GET', _this.rssUrl, true);
-      request.send();
-      */
     },
 
-    parseRss: function(){
-      /*
-      var parser = new DOMParser();
-      var xmlDoc = parser.parseFromString(this.rss, "text/xml");
-      this.title = xmlDoc;*/
+    parseFeed: function(){
     },
 
     validateUrl: function(str) {

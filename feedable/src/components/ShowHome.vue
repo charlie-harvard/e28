@@ -10,10 +10,10 @@
 
     <input
       type="text"
-      placehoder="RSS Feed"
+      placehoder="News Feed"
       v-model.number="newRssUrl"
       v-on:keyup.enter="addNewRss"
-      placeholder="Add a new RSS feed URL"
+      placeholder="Add a new News feed URL"
       size="80"
       style="padding:5px"
     />
