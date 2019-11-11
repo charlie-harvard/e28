@@ -7,7 +7,7 @@
 </template>
 
 <script>
-const axios = require("axios");
+import * as app from './../app.js';
 
 export default {
   name: "ShowFeed",
@@ -23,9 +23,9 @@ export default {
   },
   methods: {
     fetchNewsFeed: function() {
-      axios
+      app.axios
         .get(
-          "https://newsapi.org/v2/everything?q=iPhone&from=2019-10-11&sortBy=publishedAt&apiKey=41610f8871c34842ae0c19cdea2c765a"
+          app.config.newsTopHits
         )
         .then(response => {
           console.log(response);
