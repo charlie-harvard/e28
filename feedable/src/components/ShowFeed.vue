@@ -1,32 +1,39 @@
 <template>
   <div class="subCompoent">
     <h2>Feed</h2>
-    <button v-on:click="parseRss">Get</button>
-    <h3>{{ title }}</h3>
+    <button v-on:click="fetchNewsFeed">Get</button>
+    
   </div>
 </template>
 
 <script>
-import { engadgetRss } from './../data/EngadgetRss.js';
+const axios = require("axios");
 
 export default {
   name: "ShowFeed",
   props: {},
   data: function() {
     return {
-      rssUrl: "", 
-      rss: engadgetRss,
+      rssUrl: "",
+      rss: null,
       title: "",
       link: "",
       description: ""
     };
   },
   methods: {
-    fetchRssFeed: function() {
+    fetchNewsFeed: function() {
+      axios
+        .get(
+          "https://newsapi.org/v2/everything?q=iPhone&from=2019-10-11&sortBy=publishedAt&apiKey=41610f8871c34842ae0c19cdea2c765a"
+        )
+        .then(response => {
+          console.log(response);
+          console.log(response.data);
+        });
     },
 
-    parseFeed: function(){
-    },
+    parseFeed: function() {},
 
     validateUrl: function(str) {
       //https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
