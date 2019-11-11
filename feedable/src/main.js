@@ -3,7 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router';
 
 import ShowHome from './components/ShowHome.vue'
-import ShowBrowse  from './components/ShowBrowse.vue'
+import ShowSearch  from './components/ShowSearch.vue'
 import ShowNews  from './components/ShowNews.vue'
 
 Vue.config.productionTip = false
@@ -11,12 +11,13 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: '/', name: 'home', component: ShowHome},
-  { path: '/browse', name: 'browse', component: ShowBrowse},
+  { path: '/search', name: 'search', component: ShowSearch},
   { path: '/news/:id', name: 'news', props: true, component: ShowNews}
 ]
 
 const router = new VueRouter({
-  routes: routes
+  routes: routes,
+  mode: 'history',
 })
 
 new Vue({

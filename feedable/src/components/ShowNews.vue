@@ -1,5 +1,6 @@
 <template>
   <div class="subCompoent">
+    <router-link exact :to='{ name: "home"}'>Back to Home</router-link>
       <div v-if="article">
       <h2 v-if="article">{{article.title}}</h2>
       <p>{{ article.publishedAt }}</p>
@@ -7,7 +8,7 @@
       {{ article.source.name }}</p>
       <p><img :src="article.urlToImage" style="width:30%"/></p>
       <p>{{ article.content }}</p>
-      <p><a :href="article.url">Read more...</a></p>
+      <p><a target="_blank" :href="article.url">Read more...</a></p>
     </div>
   </div>
 </template>
