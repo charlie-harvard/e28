@@ -4,15 +4,15 @@ import VueRouter from 'vue-router';
 
 import ShowHome from './components/ShowHome.vue'
 import ShowBrowse  from './components/ShowBrowse.vue'
-import ShowFeed  from './components/ShowFeed.vue'
+import ShowNews  from './components/ShowNews.vue'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: ShowHome, name: 'home'},
-  { path: '/browse', component: ShowBrowse, name: 'browse'},
-  { path: '/feed', component: ShowFeed, name: 'feed'}
+  { path: '/', name: 'home', component: ShowHome},
+  { path: '/browse', name: 'browse', component: ShowBrowse},
+  { path: '/news/:id', name: 'news', props: true, component: ShowNews}
 ]
 
 const router = new VueRouter({

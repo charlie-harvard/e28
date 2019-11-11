@@ -21,7 +21,7 @@ export default {
   components: {},
   data: function() {
     return {
-      links: ["home", "browse", "feed"],
+      links: ["home", "browse"],
     };
   }
 };
