@@ -22,11 +22,6 @@ export default {
   data: function() {
     return {
       links: ["home", "browse", "feed"],
-      paths: {
-        home: "/",
-        browse: "/browse",
-        feed: "/feed"
-      }
     };
   }
 };
