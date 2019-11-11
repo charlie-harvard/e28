@@ -14,18 +14,14 @@ export default {
   props: {},
   data: function() {
     return {
-      rssUrl: "",
-      rss: null,
-      title: "",
-      link: "",
-      description: ""
+      article: null
     };
   },
   methods: {
     fetchNewsFeed: function() {
       app.axios
         .get(
-          app.config.newsTopHits
+          app.config.newsHeadlinesApi
         )
         .then(response => {
           console.log(response);

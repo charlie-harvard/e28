@@ -1,79 +1,83 @@
 <template>
   <div class="subCompoent">
     <h2>Home</h2>
-    <h3>Latest Feeds</h3>
-    <p>List of new feeds</p>
+    <h3>Latest News</h3>
+    <ul>
+      <li v-for="article in articles.slice(0, 5)" :key="article.url">
+        <strong>{{ article.title }}</strong> <router-link exact :to='{ name: "feed" }'>Read</router-link>
+        <br>
+        {{ article.author }}
+        <br>
+        {{ article.source.name }}
+        <br>
+        {{ convertTime(article.publishedAt) }}
+
+        
+      </li>
+    </ul>
 
     <hr />
 
-    <h3>My Feeds</h3>
+    <h3>My Saved Channels</h3>
 
-    <input
-      type="text"
-      placehoder="News Feed"
-      v-model.number="newRssUrl"
-      v-on:keyup.enter="addNewRss"
-      placeholder="Add a new News feed URL"
-      size="80"
-      style="padding:5px"
-    />
 
-    <button class="defaultBtn" v-on:click="addNewRss">Add</button>
+    
 
-    <ul>
-      <li v-for="myFeed in myRssUrls" :key="myFeed">{{myFeed}}</li>
-    </ul>
   </div>
 </template>
 
 <script>
+import * as app from "./../app.js";
+
 export default {
   name: "ShowHome",
   props: {},
   data: function() {
     return {
-      newRssUrl: "",
-      myRssUrls: []
+      articles: []
     };
   },
   methods: {
-    addNewRss: function() {
-      if (this.newRssUrl.trim() != "" && this.validateUrl(this.newRssUrl.trim())) {
-        this.myRssUrls.push(this.newRssUrl.trim());
-        this.newRssUrl = "";
-      }
+    addChannel: function() {},
+    convertTime: function(utcDate){
+      var localDate = new Date(utcDate);
+      return localDate.toString();
     },
-    validateUrl: function(str) {
-      //https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
-      var pattern = new RegExp(
-        "^(https?:\\/\\/)?" + // protocol
-        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-          "(\\#[-a-z\\d_]*)?$",
-        "i"
-      );
-      return !!pattern.test(str);
-    }
+  },
+  mounted() {
+    app.axios.get(app.config.newsHeadlinesApi).then(response => {
+      console.log(response.data);
+      this.articles = response.data.articles;
+    });
   }
 };
 </script>
 
 
 <style scoped>
-  /* Style the submit button */
-  .defaultBtn {
-    background-color: #333333;
-    color: white;
-    padding: 7px 20px;
-    margin: 5px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
+/* Style the submit button */
+.defaultBtn {
+  background-color: #333333;
+  color: white;
+  padding: 7px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
 
-  .defaultBtn:hover {
-    background-color: #6b6d75;
-  }
+.defaultBtn:hover {
+  background-color: #6b6d75;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 5px 10px;
+  background-color: #EEEEEE;
+  border: 1px solid #CCCCCC;
+}
 </style>
