@@ -6,7 +6,7 @@
           <img alt="Feedable logo" src="./assets/logo.png" style="width:50px;height:50px;margin-left:5px"/>
         </li>
         <li v-for="link in links" :key="link">
-          <router-link exact :to="paths[link]">{{ link }}</router-link>
+          <router-link exact :to="{ name:link }">{{ link }}</router-link>
         </li>
       </ul>
     </nav>
