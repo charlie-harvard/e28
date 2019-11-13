@@ -1,6 +1,5 @@
 <template>
   <div class="subCompoent">
-    <router-link exact :to='{ name: "home"}'>Back to Home</router-link>
       <div v-if="article">
       <h2 v-if="article">{{article.title}}</h2>
       <p>{{ article.publishedAt }}</p>
