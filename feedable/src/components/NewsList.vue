@@ -17,8 +17,8 @@
     <!-- Modal -->
     <div id="newsModal" class="modal">
       <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close" @click="closeNews">&times;</span>
+      <div class="modal-content" style="overflow: auto;">
+        <span class="close" @click="closeNews">&times;</span><br>
         <div v-if="currentArticle">
           <h3>{{ currentArticle.title }}</h3>
           <p>
@@ -28,8 +28,7 @@
             <a href="#">Add {{ currentArticle.source.id }} to Favorites</a>
           </p>
           <p>
-            <img :src="currentArticle.urlToImage" style="width: 50%;">
-            <br><br>
+            <img :src="currentArticle.urlToImage" style="width: 50%; float: left; margin: 0px 15px 15px 0px;">
             {{ currentArticle.content }}
           </p>
 
@@ -79,5 +78,44 @@ li {
   padding: 5px 10px;
   background-color: #eeeeee;
   border: 1px solid #cccccc;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 65px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #eeeeee;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 75%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 </style>
