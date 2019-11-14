@@ -25,14 +25,16 @@
             {{ convertTime(currentArticle.publishedAt) }}<br>
             {{ currentArticle.author }}<br>
             {{ currentArticle.source.name }}
-            <a href="#">Add {{ currentArticle.source.id }} to Favorites</a>
+            <span v-if="currentArticle">
+              <button @click="addToMyChannels(currentArticle)">
+                <strong>+</strong> Add to My Channels
+              </button>
+            </span>
           </p>
           <p>
-            <img :src="currentArticle.urlToImage" style="width: 50%; float: left; margin: 0px 15px 15px 0px;">
-            {{ currentArticle.content }}
+            <img v-if="currentArticle.urlToImage" :src="currentArticle.urlToImage" style="width: 50%; float: left; margin: 0px 15px 15px 0px;">
+            {{ currentArticle.content }} <a target="_blank" :href="currentArticle.url">Read more ...</a>
           </p>
-
-          <p><a target="_blank" :href="currentArticle.url">Read more...</a></p>
         </div>
       </div>
     </div>
@@ -49,6 +51,42 @@ export default {
     };
   },
   methods: {
+    addToMyChannels: function(article) {
+      let domain = this.getSourceDomain(article.url);
+      let newChannel = {'id': article.source.id, 'name': article.source.name, 'domain': domain};
+      
+      let myChannels = [];
+      if(localStorage.getItem('myChannels')){
+        myChannels = JSON.parse(localStorage.getItem('myChannels'));
+        myChannels.push(newChannel);
+        myChannels = this.uniqueChannel(myChannels);
+        localStorage.setItem('myChannels', JSON.stringify(myChannels));
+      } else {
+        myChannels.push(newChannel);
+        localStorage.setItem('myChannels', JSON.stringify(myChannels));
+      }
+    },
+    getSourceDomain: function(url){
+      let domain = '';
+      if(url){
+        let urlParts = url.replace('http://','').replace('https://','').replace('www.','').split(/[/?#]/);
+        domain = urlParts[0];
+      }
+      return domain;
+    },
+    uniqueChannel: function(channels){
+      let domians = [];
+      let currentDomain = '';
+      let newChannels = [];
+      for(let i=0; i<channels.length; i++){
+        currentDomain = channels[i].domain;
+        if(!domians.includes(currentDomain)){
+          domians.push(currentDomain);
+          newChannels.push(channels[i]);
+        }
+      }
+      return newChannels;
+    },
     convertTime: function(utcDate) {
       var localDate = new Date(utcDate);
       return localDate.toString();
