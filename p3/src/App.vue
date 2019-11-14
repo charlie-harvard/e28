@@ -2,14 +2,16 @@
   <div id="app">
     <nav>
       <ul>        
-        <li style="height:50px">
-          <img alt="Feedable logo" src="./assets/logo.png" style="width:50px;height:50px;margin-left:5px"/>
+        <li style="height:50px;">
+          <img id="siteLogo" alt="Feedable logo" src="./assets/logo.png"/>
         </li>
         <li v-for="link in links" :key="link">
           <router-link exact :to="{ name:link }">{{ link }}</router-link>
         </li>
         <li>
-          <input class="searchInput" type="text" size="30" v-model="inputKeywords" placeholder="Search by Keywords">
+          <input class="searchInput" type="text" size="30" 
+            v-model="inputKeywords" 
+            placeholder="Search by Keywords">
             <router-link class="defaultBtn" 
               :to='{ name: "search", params: {keywords: keywordsEncoded}}' 
               v-if="keywordsEncoded" tag="button"> Search
@@ -52,6 +54,12 @@ body {
   margin: 15px;
 }
 
+#siteLogo {
+  width:50px;
+  height:50px;
+  margin-left:5px;
+}
+
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -80,7 +88,6 @@ nav li a:hover {
 .router-link-active {
   background-color: #333333;
 }
-
 
 /* Style the submit button */
 .defaultBtn {
