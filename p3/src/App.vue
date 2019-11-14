@@ -72,10 +72,9 @@ nav li a:hover {
 .defaultBtn {
   background-color: #6b6d75;
   color: white;
-  padding: 7px 20px;
-  margin: 5px;
+  padding: 0px 15px 0px 15px; 
+  height: 50px; 
   border: none;
-  border-radius: 3px;
   cursor: pointer;
   font-size: 16px;
   font-family: 'Times New Roman', Times, serif;
