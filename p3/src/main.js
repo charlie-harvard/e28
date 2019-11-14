@@ -10,7 +10,7 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: '/', name: 'home', component: ShowHome},
-  { path: '/search', name: 'search', component: ShowSearch}
+  { path: '/search/:keywords', name: 'search', component: ShowSearch, props: true}
 ]
 
 const router = new VueRouter({

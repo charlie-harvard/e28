@@ -1,9 +1,6 @@
 <template>
   <div class="subCompoent">
-    <h2>Search & Browse</h2>
-  
-    <p><input type="text" size="50" @keyup.enter="searchByKeywords" v-model="keywords" placeholder="Search Keywords" style="padding: 5px;">
-    <button class="defaultBtn" @click="searchByKeywords">Search</button></p>
+    <h2>Search Result</h2>
     <p v-if="searchingKeywords">You're searching: {{ searchingKeywords }}</p>
     <news-list :articles="articles"></news-list>
   </div>
@@ -16,43 +13,33 @@ import NewsList  from './NewsList.vue'
 export default {
   name: 'ShowSearch',
   components: { NewsList },
-  props: {
-  },
+  props: ['keywords'],
   data: function(){
     return {
-      keywords: '',
       searchingKeywords: '',
       articles: [],
     }
   },
   methods:{
     searchByKeywords: function(){
-      this.keywords = encodeURI(this.keywords);
+      let keywords_encoded = this.keywords;
       app.axios
-      .get(app.config.searchNewsApi + this.keywords)
+      .get(app.config.searchNewsApi + keywords_encoded)
       .then(response => {
         this.articles = response.data.articles;
-        this.searchingKeywords = decodeURI(this.keywords);
-        this.keywords = '';
+        this.searchingKeywords = decodeURI(keywords_encoded);
       });
     },
+  },
+  mounted(){
+    this.searchByKeywords();
+  },
+  updated() {
+    this.searchByKeywords();
   }
 }
 </script>
 
 <style scoped>
-/* Style the submit button */
-.defaultBtn {
-  background-color: #333333;
-  color: white;
-  padding: 7px 20px;
-  margin: 5px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
 
-.defaultBtn:hover {
-  background-color: #6b6d75;
-}
 </style>

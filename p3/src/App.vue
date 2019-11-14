@@ -8,11 +8,15 @@
         <li v-for="link in links" :key="link">
           <router-link exact :to="{ name:link }">{{ link }}</router-link>
         </li>
-        <li><input class="searchInput" type="text" size="30" placeholder="Search by Keywords">
-            <button class="defaultBtn">Search</button><li/>
+        <li>
+          <input class="searchInput" type="text" size="30" v-model="inputKeywords" placeholder="Search by Keywords">
+            <router-link class="defaultBtn" 
+              :to='{ name: "search", params: {keywords: keywordsEncoded}}' 
+              v-if="keywordsEncoded" tag="button"> Search
+            </router-link>
+        <li/>
       </ul>
     </nav>
-
     <router-view></router-view>
   </div>
 </template>
@@ -23,8 +27,18 @@ export default {
   components: {},
   data: function() {
     return {
-      links: ["home", "search"],
+      links: ["home"],
+      inputKeywords: null,
     };
+  },
+  computed: {
+    keywordsEncoded: function(){
+      if(this.inputKeywords){
+        return encodeURI(this.inputKeywords.trim());
+      } else {
+        return '';
+      }
+    }
   }
 };
 </script>
@@ -64,13 +78,13 @@ nav li a:hover {
 }
 
 .router-link-active {
-  background-color: #6b6d75;
+  background-color: #333333;
 }
 
 
 /* Style the submit button */
 .defaultBtn {
-  background-color: #6b6d75;
+  background-color: #000000;
   color: white;
   padding: 0px 15px 0px 15px; 
   height: 50px; 
