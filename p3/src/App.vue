@@ -8,6 +8,8 @@
         <li v-for="link in links" :key="link">
           <router-link exact :to="{ name:link }">{{ link }}</router-link>
         </li>
+        <li><input class="searchInput" type="text" size="30" placeholder="Search by Keywords">
+            <button class="defaultBtn">Search</button><li/>
       </ul>
     </nav>
 
@@ -63,6 +65,32 @@ nav li a:hover {
 
 .router-link-active {
   background-color: #6b6d75;
+}
+
+
+/* Style the submit button */
+.defaultBtn {
+  background-color: #6b6d75;
+  color: white;
+  padding: 7px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.defaultBtn:hover {
+  background-color: rgb(162, 157, 157);
+}
+
+.searchInput {
+  padding: 0px 0px 0px 5px; 
+  height: 50px; 
+  border-width: 0px; 
+  font-size: 16px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 </style>
