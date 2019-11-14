@@ -29,7 +29,7 @@ export default {
   components: {},
   data: function() {
     return {
-      links: ["home"],
+      links: ["home", "channels"],
       inputKeywords: null,
     };
   },
@@ -86,7 +86,7 @@ nav li a:hover {
 }
 
 .router-link-active {
-  background-color: #333333;
+  background-color: #6b6d75;
 }
 
 /* Style the submit button */
@@ -102,7 +102,7 @@ nav li a:hover {
 }
 
 .defaultBtn:hover {
-  background-color: rgb(162, 157, 157);
+  background-color: #6b6d75;
 }
 
 .searchInput {

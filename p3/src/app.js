@@ -10,8 +10,5 @@ export const config = {
 }
 
 export let library = {
-    savedChannels: [],
-    readLaters: [],
-    readNext: null,
-    articlesCache: [],
+    myChannels: []
 }

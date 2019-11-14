@@ -42,6 +42,8 @@
 </template>
 
 <script>
+//import * as app from "./../app.js";
+
 export default {
   name: "NewsList",
   props: ["articles"],
@@ -53,23 +55,27 @@ export default {
   methods: {
     addToMyChannels: function(article) {
       let domain = this.getSourceDomain(article.url);
-      let newChannel = {'id': article.source.id, 'name': article.source.name, 'domain': domain};
+      let newChannel = {
+        'id': article.source.id, 
+        'name': article.source.name, 
+        'domain': domain
+      };
       
       let myChannels = [];
       if(localStorage.getItem('myChannels')){
         myChannels = JSON.parse(localStorage.getItem('myChannels'));
-        myChannels.push(newChannel);
-        myChannels = this.uniqueChannel(myChannels);
-        localStorage.setItem('myChannels', JSON.stringify(myChannels));
-      } else {
-        myChannels.push(newChannel);
-        localStorage.setItem('myChannels', JSON.stringify(myChannels));
       }
+      myChannels.push(newChannel);
+      myChannels = this.uniqueChannel(myChannels);
+      localStorage.setItem('myChannels', JSON.stringify(myChannels));
     },
     getSourceDomain: function(url){
       let domain = '';
       if(url){
-        let urlParts = url.replace('http://','').replace('https://','').replace('www.','').split(/[/?#]/);
+        let urlParts = url.replace('http://','')
+          .replace('https://','')
+          .replace('www.','')
+          .split(/[/?#]/);
         domain = urlParts[0];
       }
       return domain;
