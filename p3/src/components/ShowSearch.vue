@@ -2,9 +2,9 @@
   <div class="subCompoent">
     <h2>Search & Browse</h2>
   
-    <p><input type="text" size="50" v-model="keywords" placeholder="Search Keywords" style="padding: 5px;">
+    <p><input type="text" size="50" @keyup.enter="searchByKeywords" v-model="keywords" placeholder="Search Keywords" style="padding: 5px;">
     <button class="defaultBtn" @click="searchByKeywords">Search</button></p>
-
+    <p v-if="searchingKeywords">You're searching: {{ searchingKeywords }}</p>
     <news-list :articles="articles"></news-list>
   </div>
 </template>
@@ -20,7 +20,8 @@ export default {
   },
   data: function(){
     return {
-      keywords: null,
+      keywords: '',
+      searchingKeywords: '',
       articles: [],
     }
   },
@@ -30,7 +31,9 @@ export default {
       app.axios
       .get(app.config.searchNewsApi + this.keywords)
       .then(response => {
-        this.articles = response.data.articles;      
+        this.articles = response.data.articles;
+        this.searchingKeywords = decodeURI(this.keywords);
+        this.keywords = '';
       });
     },
   }
