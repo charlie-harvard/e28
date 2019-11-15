@@ -1,6 +1,5 @@
 <template>
   <div class="subCompoent">
-    {{ myChannels }}
     <ul>
       <li v-for="article in articles.slice(0, 5)" :key="article.url">
         <a href="#" @click="openNews(article)">
@@ -26,7 +25,7 @@
             {{ convertTime(currentArticle.publishedAt) }}<br>
             {{ currentArticle.author }}<br>
             {{ currentArticle.source.name }}
-            <span v-if="currentArticle">
+            <span v-if="currentArticle && !isMyChannel">
               <button @click="addToMyChannels(currentArticle)">
                 <strong>+</strong> Add to My Channels
               </button>
@@ -51,7 +50,7 @@ export default {
   data: function() {
     return {
       currentArticle: null,
-      myChannels: null,
+      myChannels: [],
     };
   },
   methods: {
@@ -71,16 +70,7 @@ export default {
       myChannels = this.uniqueChannel(myChannels);
       localStorage.setItem('myChannels', JSON.stringify(myChannels));
       this.updateMyChannels(myChannels);
-    },
-    isMyChannel: function(article){
-      let domain = this.getSourceDomain(article.url);
-      for(let i=0; i<this.myChannels.length; i++){
-        let myChannelUrl = this.myChannels[i].domain;
-        if(myChannelUrl == domain){
-          return true;
-        }
-      }
-      return false;
+      this.myChannels = myChannels;
     },
     getSourceDomain: function(url){
       let domain = '';
@@ -110,6 +100,13 @@ export default {
       app.axios
       .put(app.config.updateMyChannels, channels);
     },
+    getMyChannels: function(){
+      app.axios
+      .get(app.config.myChannels)
+      .then(response => {
+        this.myChannels = response.data;
+      });
+    },
     convertTime: function(utcDate) {
       var localDate = new Date(utcDate);
       return localDate.toString();
@@ -124,6 +121,21 @@ export default {
       modal.style.display = "none";
       this.currentArticle = null;
     }
+  },
+  computed: {
+    isMyChannel: function(){
+      let domain = this.getSourceDomain(this.currentArticle.url);
+      for(let i=0; i<this.myChannels.length; i++){
+        if(this.myChannels[i].domain == domain){
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+  ,
+  mounted(){
+    this.getMyChannels();
   }
 };
 </script>
