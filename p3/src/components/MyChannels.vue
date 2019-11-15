@@ -7,7 +7,7 @@
         <p>
           {{ channel.name }} <button @click="removeChannel(channel)">Remove</button>
           <br>
-          {{ channel.domain }} 
+          <router-link :to="{name: 'channel', params:{domain: channel.domain}}">{{ channel.domain }}</router-link>
         </p>
       </li>
     </ul>

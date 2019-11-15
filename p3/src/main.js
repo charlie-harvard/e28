@@ -5,6 +5,7 @@ import VueRouter from 'vue-router';
 import ShowHome from './components/ShowHome.vue'
 import ShowSearch  from './components/ShowSearch.vue'
 import MyChannels  from './components/MyChannels.vue'
+import Channel  from './components/Channel.vue'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
@@ -12,7 +13,8 @@ Vue.use(VueRouter);
 const routes = [
   { path: '/', name: 'home', component: ShowHome},
   { path: '/channels', name: 'channels', component: MyChannels},
-  { path: '/search/:keywords', name: 'search', component: ShowSearch, props: true}
+  { path: '/search/:keywords', name: 'search', component: ShowSearch, props: true},
+  { path: '/channel/:domain', name: 'channel', component: Channel, props: true}
 ]
 
 const router = new VueRouter({
