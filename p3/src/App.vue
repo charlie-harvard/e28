@@ -19,7 +19,9 @@
         <li/>
       </ul>
     </nav>
+    
     <router-view></router-view>
+    <p class="creditFooter">Powered by <a style="color:#6b6d75;" href="https://newsapi.org/" target="_blank">NewsAPI.org</a></p>
   </div>
 </template>
 
@@ -48,6 +50,11 @@ export default {
 <style>
 body {
   margin: 0px;
+}
+
+.creditFooter{
+  color: #6b6d75;
+  margin-left: 15px;
 }
 
 .subCompoent {
