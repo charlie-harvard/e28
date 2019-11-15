@@ -67,7 +67,7 @@ export default {
       }
       myChannels.push(newChannel);
       myChannels = this.uniqueChannel(myChannels);
-      localStorage.setItem('myChannels', JSON.stringify(myChannels));
+      localStorage.setItem('newlyAdded', JSON.stringify(myChannels));
       this.updateMyChannels(myChannels);
       this.myChannels = myChannels;
     },

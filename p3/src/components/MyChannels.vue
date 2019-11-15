@@ -44,7 +44,6 @@ export default {
       }
       this.myChannels = this.uniqueChannel(newMyChannels);
       this.updateMyChannels(newMyChannels);
-      localStorage.setItem('myChannels', JSON.stringify(newMyChannels));
     },
     uniqueChannel: function(channels){
       let domians = [];
