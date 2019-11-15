@@ -5,9 +5,9 @@
     <ul v-if="myChannels">
       <li v-for="channel in myChannels" :key="channel.domain">
         <p>
-          {{ channel.name }}
+          {{ channel.name }} <button @click="removeChannel(channel)">Remove</button>
           <br>
-          {{ channel.domain }}
+          {{ channel.domain }} 
         </p>
       </li>
     </ul>
@@ -32,6 +32,33 @@ export default {
       .then(response => {
         this.myChannels = response.data;
       });
+    },
+    removeChannel: function(channel){
+      let newMyChannels = [];
+      for(let i=0; i<this.myChannels.length; i++){
+        if(this.myChannels[i].domain != channel.domain){
+          newMyChannels.push(this.myChannels[i]);
+        }
+      }
+      this.myChannels = this.uniqueChannel(newMyChannels);
+      this.updateMyChannels(newMyChannels);
+    },
+    uniqueChannel: function(channels){
+      let domians = [];
+      let currentDomain = '';
+      let newChannels = [];
+      for(let i=0; i<channels.length; i++){
+        currentDomain = channels[i].domain;
+        if(!domians.includes(currentDomain)){
+          domians.push(currentDomain);
+          newChannels.push(channels[i]);
+        }
+      }
+      return newChannels;
+    },
+    updateMyChannels: function(channels){
+      app.axios
+      .put(app.config.updateMyChannels, channels);
     }
   },
   mounted(){
