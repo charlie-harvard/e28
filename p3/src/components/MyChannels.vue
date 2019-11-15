@@ -5,10 +5,12 @@
     <ul v-if="myChannels">
       <li v-for="channel in myChannels" :key="channel.domain">
         <p>
-          {{ channel.name }} <button @click="removeChannel(channel)">Remove</button>
+          {{ channel.name }} 
           <br>
-          <router-link :to="{name: 'channel', params:{domain: channel.domain}}">{{ channel.domain }}</router-link>
+          Read more at <router-link class="domainLink" :to="{name: 'channel', params:{domain: channel.domain}}">{{ channel.domain }}</router-link>
+          <br>
         </p>
+        <p><button class="removeButton" @click="removeChannel(channel)">Remove this channel</button></p>
       </li>
     </ul>
     <p v-else>You currently don't have any saved channels.</p>
@@ -79,5 +81,19 @@ li {
   padding: 5px 5px;
   background-color: #ffffff;
   border-bottom: 1px solid #cccccc;
+}
+
+.domainLink {
+    color: #230885;
+    text-decoration: underline;
+    margin-left: 0px;
+    font-size: 18px;
+}
+
+.removeButton {
+  font-size: 12px;
+  border-radius: 3px;
+  background-color: #e7e7e7; 
+  color: black;
 }
 </style>

@@ -2,13 +2,12 @@
   <div class="subCompoent">
     <ul>
       <li v-for="article in articles.slice(0, 5)" :key="article.url">
-        <a href="#" @click="openNews(article)">
+        <a class="txtlink" href="#" @click="openNews(article)">
           <strong>{{ article.title }}</strong>
         </a>
         <p>
-          {{ article.author }}
-          <br />
-          {{ article.source.name }}
+          <span v-if="article.author">{{ article.author }}<br></span>
+          <span v-if="article.source.name">{{ article.source.name }}</span>
         </p>
         <p>{{ article.description }}</p>
       </li>
@@ -190,5 +189,12 @@ li {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.txtlink {
+  color: #2f2fd8;
+  text-decoration: none;
+  margin-left: 0px;
+  font-size: 16px;
 }
 </style>

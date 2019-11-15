@@ -12,10 +12,15 @@
           <input class="searchInput" type="text" size="30" 
             v-model="inputKeywords" 
             placeholder="Search by Keywords">
-            <router-link class="defaultBtn" 
-              :to='{ name: "search", params: {keywords: keywordsEncoded}}' 
-              v-if="keywordsEncoded" tag="button"> Search
-            </router-link>
+            <span v-if="keywordsEncoded">
+              <router-link class="defaultBtn" 
+                :to='{ name: "search", params: {keywords: keywordsEncoded}}' tag="button"> Search
+              </router-link>
+            </span>
+            <span v-else>
+              <!-- Fack Button -->
+              <button class="defaultBtn">Search</button>
+            </span>
         <li/>
       </ul>
     </nav>
@@ -85,7 +90,7 @@ nav li a {
   text-align: center;
   padding: 16px;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 nav li a:hover {
@@ -98,7 +103,7 @@ nav li a:hover {
 
 /* Style the submit button */
 .defaultBtn {
-  background-color: #000000;
+  background-color: #333333;
   color: white;
   padding: 0px 15px 0px 15px; 
   height: 50px; 
@@ -113,7 +118,8 @@ nav li a:hover {
 }
 
 .searchInput {
-  padding: 0px 0px 0px 5px; 
+  padding: 0px 0px 0px 5px;
+  background-color: #eeeeee;
   height: 50px; 
   border-width: 0px; 
   font-size: 16px;

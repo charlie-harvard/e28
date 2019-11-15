@@ -1,7 +1,6 @@
 <template>
   <div class="subCompoent">
-    <h2>Search Result</h2>
-    <p v-if="searchingKeywords">You're searching: {{ searchingKeywords }}</p>
+    <h2 v-if="searchingKeywords">Results for "{{ searchingKeywords }}"</h2>
     <news-list :articles="articles"></news-list>
   </div>
 </template>
