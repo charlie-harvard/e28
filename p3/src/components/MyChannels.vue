@@ -16,21 +16,22 @@
 </template>
 
 <script>
-//import * as app from './../app.js';
+import * as app from './../app.js';
 
 export default {
   name: "MyChannels",
   data: function() {
     return {
-      myChannels: null,
+      myChannels: [],
     };
   },
   methods: {
     getMyChannels: function(){
-      if(localStorage.getItem("myChannels")){
-        let cachedMyChannels = localStorage.getItem("myChannels");
-        this.myChannels = JSON.parse(cachedMyChannels);
-      }
+      app.axios
+      .get(app.config.myChannels)
+      .then(response => {
+        this.myChannels = response.data;
+      });
     }
   },
   mounted(){

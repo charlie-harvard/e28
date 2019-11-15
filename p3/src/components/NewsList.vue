@@ -1,5 +1,6 @@
 <template>
   <div class="subCompoent">
+    {{ myChannels }}
     <ul>
       <li v-for="article in articles.slice(0, 5)" :key="article.url">
         <a href="#" @click="openNews(article)">
@@ -42,23 +43,24 @@
 </template>
 
 <script>
-//import * as app from "./../app.js";
+import * as app from "./../app.js";
 
 export default {
   name: "NewsList",
   props: ["articles"],
   data: function() {
     return {
-      currentArticle: null
+      currentArticle: null,
+      myChannels: null,
     };
   },
   methods: {
     addToMyChannels: function(article) {
       let domain = this.getSourceDomain(article.url);
       let newChannel = {
-        'id': article.source.id, 
-        'name': article.source.name, 
-        'domain': domain
+        id: article.source.id, 
+        name: article.source.name, 
+        domain: domain
       };
       
       let myChannels = [];
@@ -68,6 +70,17 @@ export default {
       myChannels.push(newChannel);
       myChannels = this.uniqueChannel(myChannels);
       localStorage.setItem('myChannels', JSON.stringify(myChannels));
+      this.updateMyChannels(myChannels);
+    },
+    isMyChannel: function(article){
+      let domain = this.getSourceDomain(article.url);
+      for(let i=0; i<this.myChannels.length; i++){
+        let myChannelUrl = this.myChannels[i].domain;
+        if(myChannelUrl == domain){
+          return true;
+        }
+      }
+      return false;
     },
     getSourceDomain: function(url){
       let domain = '';
@@ -92,6 +105,10 @@ export default {
         }
       }
       return newChannels;
+    },
+    updateMyChannels: function(channels){
+      app.axios
+      .put(app.config.updateMyChannels, channels);
     },
     convertTime: function(utcDate) {
       var localDate = new Date(utcDate);
