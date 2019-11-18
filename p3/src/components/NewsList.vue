@@ -60,16 +60,14 @@ export default {
         name: article.source.name, 
         domain: domain
       };
+      this.myChannels.push(newChannel);
+      this.myChannels = this.uniqueChannel(this.myChannels);
       
-      let myChannels = [];
-      if(localStorage.getItem('myChannels')){
-        myChannels = JSON.parse(localStorage.getItem('myChannels'));
+      if(!this.myChannels || this.myChannels.length == 0){
+        this.myChannels = [{id:'', name:'', domain:''}];
       }
-      myChannels.push(newChannel);
-      myChannels = this.uniqueChannel(myChannels);
-      localStorage.setItem('newlyAdded', JSON.stringify(myChannels));
-      this.updateMyChannels(myChannels);
-      this.myChannels = myChannels;
+
+      app.axios.put(app.config.updateMyChannels, this.myChannels);
     },
     getSourceDomain: function(url){
       let domain = '';
@@ -94,10 +92,6 @@ export default {
         }
       }
       return newChannels;
-    },
-    updateMyChannels: function(channels){
-      app.axios
-      .put(app.config.updateMyChannels, channels);
     },
     getMyChannels: function(){
       app.axios
