@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueRouter from 'vue-router';
+import VueRouter from 'vue-router'
 
-import ShowHome from './components/ShowHome.vue'
-import ShowSearch  from './components/ShowSearch.vue'
-import MyChannels  from './components/MyChannels.vue'
-import Channel  from './components/Channel.vue'
+import Home from './components/pages/Home.vue'
+import SearchResults  from './components/pages/SearchResults.vue'
+import MyChannels  from './components/pages/MyChannels.vue'
+import Channel  from './components/pages/Channel.vue'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', name: 'home', component: ShowHome},
+  { path: '/', name: 'home', component: Home},
   { path: '/channels', name: 'channels', component: MyChannels},
-  { path: '/search/:keywords', name: 'search', component: ShowSearch, props: true},
+  { path: '/search/:keywords', name: 'search', component: SearchResults, props: true},
   { path: '/channel/:domain', name: 'channel', component: Channel, props: true}
 ]
 

@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import * as app from "./../app.js";
-import NewsList  from './NewsList.vue'
+import * as app from "./../../app.js"
+import NewsList  from '../NewsList.vue'
 
 export default {
-  name: "ShowHome",
+  name: "Home",
   components: { NewsList },
   props: {},
   data: function() {

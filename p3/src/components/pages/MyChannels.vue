@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import * as app from './../app.js';
+import * as app from './../../app.js'
 
 export default {
   name: "MyChannels",

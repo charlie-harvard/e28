@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import * as app from "./../app.js";
-import NewsList  from './NewsList.vue'
+import * as app from "./../../app.js"
+import NewsList  from '../NewsList.vue'
 
 export default {
-  name: 'ShowSearch',
+  name: 'SearchResults',
   components: { NewsList },
   props: ['keywords'],
   data: function(){

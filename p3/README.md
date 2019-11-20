@@ -1,24 +1,11 @@
-# p3
+# Project 3
++ By: Chutian Gao
++ Production URL: <http://p3.charlieis.me>
 
-## Project setup
-```
-npm install
-```
+Feedable News
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Outside resources
+[News API](https://newsapi.org/docs)
+[JSONBin.io](https://jsonbin.io/)
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Notes for instructor
