@@ -12,6 +12,8 @@ By clicking on the news source domain link, Channel page shows up. A list of lat
 
 Searching function is implemented on the navigation bar. It utilizes NewsAPI to display 20 related news on Search Results page.
 
+Finally, on Search Results page, I use localStorage to store users recent search keywords.
+
 ## Outside resources
 [News API](https://newsapi.org/docs)
 
