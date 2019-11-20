@@ -1,8 +1,6 @@
-# Project 3
+# Project 3 Feedable News
 + By: Chutian Gao
 + Production URL: <http://p3.charlieis.me>
-
-Feedable News
 
 There are 4 "pages", Home, My Channels, Search Results, and Channel. 
 
@@ -20,3 +18,4 @@ Searching function is implemented on the navigation bar. It utilizes NewsAPI to 
 [JSONBin.io](https://jsonbin.io/)
 
 ## Notes for instructor
+Since I am using NewsAPI's "Developer" plan, the Feedable app can only send up to 500 requests per day. 
