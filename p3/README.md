@@ -2,7 +2,7 @@
 + By: Chutian Gao
 + Production URL: <http://p3.charlieis.me>
 
-There are 4 "pages", Home, My Channels, Search Results, and Channel. 
+There are 4 "pages", **Home**, **My Channels**, **Search Results**, and **Channel**. 
 
 On the Home page, I pull 5 top news using NewsAPI. On a popup window, I display news details and provide a button for user to add the current news source(domain). 
 
