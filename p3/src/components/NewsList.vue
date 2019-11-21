@@ -77,6 +77,7 @@ export default {
           .replace('https://','')
           .replace('www.','')
           .replace('news.','')
+          .replace('feedproxy.','')
           .split(/[/?#]/);
         domain = urlParts[0];
       }

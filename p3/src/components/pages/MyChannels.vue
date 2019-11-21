@@ -91,7 +91,7 @@ li {
 .removeButton {
   font-size: 12px;
   border-radius: 3px;
-  background-color: #e7e7e7; 
-  color: black;
+  background-color: #333333; 
+  color: #ffffff;
 }
 </style>
