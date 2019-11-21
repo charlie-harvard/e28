@@ -1,7 +1,15 @@
-# Project 3 Feedable News
+# Project 3
 + By: Chutian Gao
 + Production URL: <http://p3.charlieis.me>
 
+Feedable News
+
+## Outside resources
+[News API](https://newsapi.org/docs)
+
+[JSONBin.io](https://jsonbin.io/)
+
+## Notes for instructor
 There are 4 "pages", **Home**, **My Channels**, **Search Results**, and **Channel**. 
 
 On the Home page, I pull 5 top news using NewsAPI. On a popup window, I display news details and provide a button for user to add the current news source(domain). 
@@ -14,10 +22,4 @@ Searching function is implemented on the navigation bar. It utilizes NewsAPI to 
 
 Finally, on Search Results page, I use localStorage to store users recent search keywords.
 
-## Outside resources
-[News API](https://newsapi.org/docs)
-
-[JSONBin.io](https://jsonbin.io/)
-
-## Notes for instructor
-Since I am using NewsAPI's "Developer" plan, the Feedable app can only send up to 500 requests per day. 
+p.s. Since I am using NewsAPI's "Developer" plan, the Feedable app can only send up to 500 requests per day. 
