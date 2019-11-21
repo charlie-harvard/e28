@@ -66,8 +66,9 @@ export default {
       if(!this.myChannels || this.myChannels.length == 0){
         this.myChannels = [{id:'', name:'', domain:''}];
       }
-
-      app.axios.put(app.config.updateMyChannels, this.myChannels);
+      
+      let myChannels = {myChannels: this.myChannels};
+      app.axios.put(app.config.updateMyChannels, myChannels);
     },
     getSourceDomain: function(url){
       let domain = '';
@@ -75,6 +76,7 @@ export default {
         let urlParts = url.replace('http://','')
           .replace('https://','')
           .replace('www.','')
+          .replace('news.','')
           .split(/[/?#]/);
         domain = urlParts[0];
       }
@@ -97,7 +99,7 @@ export default {
       app.axios
       .get(app.config.myChannels)
       .then(response => {
-        this.myChannels = response.data;
+        this.myChannels = response.data.myChannels;
       });
     },
     convertTime: function(utcDate) {
@@ -146,22 +148,20 @@ li {
   border: 1px solid #cccccc;
 }
 
-/* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 65px; /* Location of the box */
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 65px;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 
-/* Modal Content */
 .modal-content {
   background-color: #eeeeee;
   margin: auto;
@@ -170,7 +170,6 @@ li {
   width: 75%;
 }
 
-/* The Close Button */
 .close {
   color: #aaaaaa;
   float: right;

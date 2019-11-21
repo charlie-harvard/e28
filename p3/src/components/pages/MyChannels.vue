@@ -1,8 +1,7 @@
 <template>
   <div class="subCompoent">
     <h2>My Channels</h2>
-
-    <ul v-if="myChannels">
+    <ul v-if="myChannels.length > 0">
       <li v-for="channel in myChannels" :key="channel.domain">
         <p>
           {{ channel.name }} 
@@ -32,7 +31,7 @@ export default {
       app.axios
       .get(app.config.myChannels)
       .then(response => {
-        this.myChannels = response.data;
+        this.myChannels = response.data.myChannels;
       });
     },
     removeChannel: function(channel){
@@ -59,8 +58,8 @@ export default {
       return newChannels;
     },
     updateMyChannels: function(channels){
-      app.axios
-      .put(app.config.updateMyChannels, channels);
+      let myChannels = {myChannels: channels};
+      app.axios.put(app.config.updateMyChannels, myChannels);
     }
   },
   mounted(){
