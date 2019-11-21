@@ -131,6 +131,13 @@ export default {
   ,
   mounted(){
     this.getMyChannels();
+    
+    let modal = document.getElementById("newsModal");
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
   }
 };
 </script>
