@@ -2,10 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 
+import store from './store'
+
 import Home from './components/pages/Home.vue'
 import SearchResults from './components/pages/SearchResults.vue'
 import MyChannels from './components/pages/MyChannels.vue'
 import Channel from './components/pages/Channel.vue'
+
+
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
@@ -23,6 +27,7 @@ const router = new VueRouter({
 })
 
 new Vue({
+  store: store,
   router: router,
   render: h => h(App),
 }).$mount('#app')

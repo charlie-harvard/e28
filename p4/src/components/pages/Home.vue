@@ -1,5 +1,6 @@
 <template>
   <div class="subCompoent">
+    <p>You have {{ channelCount }} channels saved.</p>
     <h2>Latest News</h2>
 
     <news-list :articles="articles"></news-list>
@@ -24,6 +25,12 @@ export default {
     app.axios.get(app.config.newsHeadlinesApi).then(response => {
       this.articles = response.data.articles;
     });
+  },
+  computed: {
+    channelCount: function() {
+      console.log(this.$store.state.channelCount);
+        return this.$store.state.channelCount;
+    }
   }
 };
 </script>
