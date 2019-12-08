@@ -1,15 +1,14 @@
 <template>
   <div class="subCompoent">
     <h2>Latest News</h2>
-    
+
     <news-list :articles="articles"></news-list>
-  
   </div>
 </template>
 
 <script>
-import * as app from "./../../app.js"
-import NewsList  from '../NewsList.vue'
+import * as app from "./../../app.js";
+import NewsList from "../NewsList.vue";
 
 export default {
   name: "Home",
@@ -20,14 +19,11 @@ export default {
       articles: []
     };
   },
-  methods: {
-  },
+  methods: {},
   mounted() {
-    app.axios
-      .get(app.config.newsHeadlinesApi)
-      .then(response => {
-        this.articles = response.data.articles;
-      });
+    app.axios.get(app.config.newsHeadlinesApi).then(response => {
+      this.articles = response.data.articles;
+    });
   }
 };
 </script>

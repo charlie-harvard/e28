@@ -6,7 +6,10 @@
           <strong>{{ article.title }}</strong>
         </a>
         <p>
-          <span v-if="article.author">{{ article.author }}<br></span>
+          <span v-if="article.author">
+            {{ article.author }}
+            <br />
+          </span>
           <span v-if="article.source.name">{{ article.source.name }}</span>
         </p>
         <p>{{ article.description }}</p>
@@ -17,12 +20,15 @@
     <div id="newsModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content" style="overflow: auto;">
-        <span class="close" @click="closeNews">&times;</span><br>
+        <span class="close" @click="closeNews">&times;</span>
+        <br />
         <div v-if="currentArticle">
           <h3>{{ currentArticle.title }}</h3>
           <p>
-            {{ convertTime(currentArticle.publishedAt) }}<br>
-            {{ currentArticle.author }}<br>
+            {{ convertTime(currentArticle.publishedAt) }}
+            <br />
+            {{ currentArticle.author }}
+            <br />
             {{ currentArticle.source.name }}
             <span v-if="currentArticle && !isMyChannel">
               <button @click="addToMyChannels(currentArticle)">
@@ -31,8 +37,13 @@
             </span>
           </p>
           <p>
-            <img v-if="currentArticle.urlToImage" :src="currentArticle.urlToImage" style="width: 50%; float: left; margin: 0px 15px 15px 0px;">
-            {{ currentArticle.content }} <a target="_blank" :href="currentArticle.url">Read more ...</a>
+            <img
+              v-if="currentArticle.urlToImage"
+              :src="currentArticle.urlToImage"
+              style="width: 50%; float: left; margin: 0px 15px 15px 0px;"
+            />
+            {{ currentArticle.content }}
+            <a target="_blank" :href="currentArticle.url">Read more ...</a>
           </p>
         </div>
       </div>
@@ -49,57 +60,56 @@ export default {
   data: function() {
     return {
       currentArticle: null,
-      myChannels: [],
+      myChannels: []
     };
   },
   methods: {
     addToMyChannels: function(article) {
       let domain = this.getSourceDomain(article.url);
       let newChannel = {
-        id: article.source.id, 
-        name: article.source.name, 
+        id: article.source.id,
+        name: article.source.name,
         domain: domain
       };
       this.myChannels.push(newChannel);
       this.myChannels = this.uniqueChannel(this.myChannels);
-      
-      if(!this.myChannels || this.myChannels.length == 0){
-        this.myChannels = [{id:'', name:'', domain:''}];
+
+      if (!this.myChannels || this.myChannels.length == 0) {
+        this.myChannels = [{ id: "", name: "", domain: "" }];
       }
-      
-      let myChannels = {myChannels: this.myChannels};
+
+      let myChannels = { myChannels: this.myChannels };
       app.axios.put(app.config.updateMyChannels, myChannels);
     },
-    getSourceDomain: function(url){
-      let domain = '';
-      if(url){
-        let urlParts = url.replace('http://','')
-          .replace('https://','')
-          .replace('www.','')
-          .replace('news.','')
-          .replace('feedproxy.','')
+    getSourceDomain: function(url) {
+      let domain = "";
+      if (url) {
+        let urlParts = url
+          .replace("http://", "")
+          .replace("https://", "")
+          .replace("www.", "")
+          .replace("news.", "")
+          .replace("feedproxy.", "")
           .split(/[/?#]/);
         domain = urlParts[0];
       }
       return domain;
     },
-    uniqueChannel: function(channels){
+    uniqueChannel: function(channels) {
       let domians = [];
-      let currentDomain = '';
+      let currentDomain = "";
       let newChannels = [];
-      for(let i=0; i<channels.length; i++){
+      for (let i = 0; i < channels.length; i++) {
         currentDomain = channels[i].domain;
-        if(!domians.includes(currentDomain)){
+        if (!domians.includes(currentDomain)) {
           domians.push(currentDomain);
           newChannels.push(channels[i]);
         }
       }
       return newChannels;
     },
-    getMyChannels: function(){
-      app.axios
-      .get(app.config.myChannels)
-      .then(response => {
+    getMyChannels: function() {
+      app.axios.get(app.config.myChannels).then(response => {
         this.myChannels = response.data.myChannels;
       });
     },
@@ -110,39 +120,37 @@ export default {
     openNews: function(article) {
       this.currentArticle = article;
       let modal = document.getElementById("newsModal");
-      modal.style.display = "block";      
+      modal.style.display = "block";
     },
-    closeNews: function(){
+    closeNews: function() {
       let modal = document.getElementById("newsModal");
       modal.style.display = "none";
       this.currentArticle = null;
     }
   },
   computed: {
-    isMyChannel: function(){
+    isMyChannel: function() {
       let domain = this.getSourceDomain(this.currentArticle.url);
-      for(let i=0; i<this.myChannels.length; i++){
-        if(this.myChannels[i].domain == domain){
+      for (let i = 0; i < this.myChannels.length; i++) {
+        if (this.myChannels[i].domain == domain) {
           return true;
         }
       }
       return false;
     }
-  }
-  ,
-  mounted(){
+  },
+  mounted() {
     this.getMyChannels();
-    
+
     let modal = document.getElementById("newsModal");
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
       }
-    }
+    };
   }
 };
 </script>
-
 
 <style scoped>
 ul {
@@ -166,8 +174,8 @@ li {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
