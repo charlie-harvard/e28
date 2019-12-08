@@ -7,7 +7,9 @@
       <span
         v-for="searched in recentSearches.slice(0, 5)"
         :key="searched.timestamp"
-      >{{ searched.keywords }} | </span>
+      >
+        <router-link class="searchLink"
+          :to='{ name: "search", params: {keywords: searched.keywords}}'> {{searched.keywords}} </router-link> | </span>
     </p>
     <news-list :articles="articles"></news-list>
   </div>
@@ -68,3 +70,17 @@ export default {
   }
 };
 </script>
+
+
+<style scoped>
+.searchLink {
+  color: #230885;
+  text-decoration: underline;
+  margin-left: 0px;
+  font-size: 18px;
+}
+
+.router-link-active {
+    background-color: #ffffff;
+}
+</style>

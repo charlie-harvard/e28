@@ -18,7 +18,7 @@
               </router-link>
             </span>
             <span v-else>
-              <!-- Fack Button -->
+              <!-- Fake Button, used when router link button is not ready -->
               <button class="defaultBtn">Search</button>
             </span>
         <li/>
