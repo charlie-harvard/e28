@@ -1,5 +1,6 @@
 <template>
   <div class="subCompoent">
+    <p v-if="(newChannelCount > 0)">You have {{ newChannelCount }} newly saved channel(s).</p>
     <h2>My Channels</h2>
     <ul v-if="myChannels.length > 0">
       <li v-for="channel in myChannels" :key="channel.domain">
@@ -46,6 +47,7 @@ export default {
       }
       this.myChannels = this.uniqueChannel(newMyChannels);
       this.updateMyChannels(newMyChannels);
+      this.$store.commit('updateNewChannelCount', -1);
     },
     uniqueChannel: function(channels) {
       let domians = [];
@@ -67,6 +69,11 @@ export default {
   },
   mounted() {
     this.getMyChannels();
+  },
+  computed: {
+    newChannelCount: function() {
+        return this.$store.state.newChannelCount;
+    }
   }
 };
 </script>

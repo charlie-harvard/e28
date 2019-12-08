@@ -80,6 +80,7 @@ export default {
 
       let myChannels = { myChannels: this.myChannels };
       app.axios.put(app.config.updateMyChannels, myChannels);
+      this.$store.commit('updateNewChannelCount', 1);
     },
     getSourceDomain: function(url) {
       let domain = "";

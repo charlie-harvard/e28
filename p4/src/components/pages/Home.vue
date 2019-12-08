@@ -1,6 +1,6 @@
 <template>
   <div class="subCompoent">
-    <p>You have {{ channelCount }} channels saved.</p>
+    <p v-if="(newChannelCount > 0)">You have {{ newChannelCount }} newly saved channel(s).</p>
     <h2>Latest News</h2>
 
     <news-list :articles="articles"></news-list>
@@ -27,9 +27,8 @@ export default {
     });
   },
   computed: {
-    channelCount: function() {
-      console.log(this.$store.state.channelCount);
-        return this.$store.state.channelCount;
+    newChannelCount: function() {
+        return this.$store.state.newChannelCount;
     }
   }
 };

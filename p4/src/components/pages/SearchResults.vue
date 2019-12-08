@@ -1,12 +1,13 @@
 <template>
   <div class="subCompoent">
+    <p v-if="(newChannelCount > 0)">You have {{ newChannelCount }} newly saved channel(s).</p>
     <h2 v-if="searchingKeywords">Results for "{{ searchingKeywords }}"</h2>
     <p v-if="recentSearches">
-      <strong>Recent Searches:</strong>
+      <strong>Recent Searches: </strong>
       <span
         v-for="searched in recentSearches.slice(0, 5)"
         :key="searched.timestamp"
-      >{{ searched.keywords }}</span>
+      >{{ searched.keywords }} | </span>
     </p>
     <news-list :articles="articles"></news-list>
   </div>
@@ -54,6 +55,11 @@ export default {
   },
   mounted() {
     this.searchByKeywords();
+  },
+  computed: {
+    newChannelCount: function() {
+        return this.$store.state.newChannelCount;
+    }
   },
   watch: {
     keywords: function() {

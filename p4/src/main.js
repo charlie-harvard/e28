@@ -9,8 +9,6 @@ import SearchResults from './components/pages/SearchResults.vue'
 import MyChannels from './components/pages/MyChannels.vue'
 import Channel from './components/pages/Channel.vue'
 
-
-
 Vue.config.productionTip = false
 Vue.use(VueRouter);
 
