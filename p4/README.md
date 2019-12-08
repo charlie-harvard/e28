@@ -2,7 +2,7 @@
 + By: Chutian Gao
 + Production URL: <http://p4.charlieis.me>
 
-Feedable News
+Feedable News 2.0
 
 ## Outside resources
 [News API](https://newsapi.org/docs)
