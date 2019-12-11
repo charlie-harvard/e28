@@ -6,10 +6,10 @@
       <strong>Recent Searches: </strong>
       <span
         v-for="searched in recentSearches.slice(0, 5)"
-        :key="searched.timestamp"
+        :key="searched"
       >
         <router-link class="searchLink"
-          :to='{ name: "search", params: {keywords: searched.keywords}}'> {{searched.keywords}} </router-link> | </span>
+          :to='{ name: "search", params: {keywords: searched}}'> {{searched}} </router-link> | </span>
     </p>
     <news-list :articles="articles"></news-list>
   </div>
@@ -47,12 +47,9 @@ export default {
       let recentSearch = JSON.parse(
         localStorage.getItem("recentSearch") || "[]"
       );
-      recentSearch.push({
-        keywords: this.searchingKeywords,
-        timestamp: Date.now()
-      });
-      this.recentSearches = recentSearch.reverse();
-      localStorage.setItem("recentSearch", JSON.stringify(recentSearch));
+      recentSearch.push(this.searchingKeywords);
+      this.recentSearches = [...new Set(recentSearch)];
+      localStorage.setItem("recentSearch", JSON.stringify(this.recentSearches));
     }
   },
   mounted() {
