@@ -14,7 +14,8 @@
             placeholder="Search by Keywords">
             <span v-if="keywordsEncoded">
               <router-link class="defaultBtn" 
-                :to='{ name: "search", params: {keywords: keywordsEncoded}}' tag="button"> Search
+                :to='{ name: "search", params: {keywords: keywordsEncoded}}' tag="button"> 
+                Search <span v-if='!$v.keywordsEncoded.minLength'>(at least 2 chars)</span>
               </router-link>
             </span>
             <span v-else>
@@ -31,6 +32,8 @@
 </template>
 
 <script>
+import { minLength } from 'vuelidate/lib/validators'
+
 export default {
   name: "app",
   components: {},
@@ -47,6 +50,11 @@ export default {
       } else {
         return '';
       }
+    }
+  },
+  validations:{
+    keywordsEncoded: {
+      minLength: minLength(2)
     }
   }
 };

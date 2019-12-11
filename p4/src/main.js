@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-
 import store from './store'
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
 
 import Home from './components/pages/Home.vue'
 import SearchResults from './components/pages/SearchResults.vue'

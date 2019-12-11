@@ -13,6 +13,7 @@
           >{{ channel.domain }}</router-link>
           <br />
         </p>
+        <p>Notes: <input type="text" v-model="channel.notes" @change="updateChannel()"></p>
         <p>
           <button class="removeButton" @click="removeChannel(channel)">Remove this channel</button>
         </p>
@@ -37,6 +38,14 @@ export default {
       app.axios.get(app.config.myChannels).then(response => {
         this.myChannels = response.data.myChannels;
       });
+    },
+    updateChannel: function() {
+      let newMyChannels = [];
+      for (let i = 0; i < this.myChannels.length; i++) {
+        newMyChannels.push(this.myChannels[i]);
+      }
+      this.myChannels = this.uniqueChannel(newMyChannels);
+      this.updateMyChannels(newMyChannels);
     },
     removeChannel: function(channel) {
       let newMyChannels = [];
