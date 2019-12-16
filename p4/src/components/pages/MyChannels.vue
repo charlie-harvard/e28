@@ -3,7 +3,7 @@
     <p v-if="(newChannelCount > 0)">You have {{ newChannelCount }} newly saved channel(s).</p>
     <h2>My Channels</h2>
     <ul v-if="myChannels.length > 0">
-      <li v-for="channel in myChannels" :key="channel.domain">
+      <li class="channelItem" v-for="channel in myChannels" :key="channel.domain">
         <p>
           {{ channel.name }}
           <br />Read more at

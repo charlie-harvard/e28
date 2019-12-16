@@ -31,7 +31,7 @@
             <br />
             {{ currentArticle.source.name }}
             <span v-if="currentArticle && !isMyChannel">
-              <button @click="addToMyChannels(currentArticle)">
+              <button id="addChannleBtn" @click="addToMyChannels(currentArticle)">
                 <strong>+</strong> Add to My Channels
               </button>
             </span>
