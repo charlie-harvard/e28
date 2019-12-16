@@ -1,7 +1,7 @@
 <template>
-  <div class="subCompoent">
+  <div class="subComponent">
     <ul>
-      <li v-for="article in articles.slice(0, 5)" :key="article.url">
+      <li class="newsItem" v-for="article in articles.slice(0, 5)" :key="article.url">
         <a class="txtlink" href="#" @click="openNews(article)">
           <strong>{{ article.title }}</strong>
         </a>

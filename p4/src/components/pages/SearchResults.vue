@@ -44,12 +44,17 @@ export default {
         });
     },
     saveSearchHistory: function() {
-      let recentSearch = JSON.parse(
-        localStorage.getItem("recentSearch") || "[]"
-      );
+      let recentSearch = [];
+      if (typeof localStorage !== 'undefined'){
+        recentSearch = JSON.parse(
+          localStorage.getItem("recentSearch") || "[]"
+        );
+      }
       recentSearch.push(this.searchingKeywords);
       this.recentSearches = [...new Set(recentSearch)];
-      localStorage.setItem("recentSearch", JSON.stringify(this.recentSearches));
+      if (typeof localStorage !== 'undefined'){
+        localStorage.setItem("recentSearch", JSON.stringify(this.recentSearches));
+      }
     }
   },
   mounted() {
