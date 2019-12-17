@@ -12,7 +12,7 @@
           <input class="searchInput" type="text" size="30" 
             v-model="inputKeywords" 
             placeholder="Search by Keywords">
-            <span v-if="keywordsEncoded">
+            <span v-if="keywordsEncoded && $v.keywordsEncoded.minLength">
               <router-link class="defaultBtn" 
                 :to='{ name: "search", params: {keywords: keywordsEncoded}}' tag="button"> 
                 Search <span v-if='!$v.keywordsEncoded.minLength'>(at least 2 chars)</span>
@@ -20,7 +20,7 @@
             </span>
             <span v-else>
               <!-- Fake Button, used when router link button is not ready -->
-              <button class="defaultBtn">Search</button>
+              <button class="defaultBtn">Search <span v-if='!$v.keywordsEncoded.minLength'>(at least 2 chars)</span></button>
             </span>
         <li/>
       </ul>
