@@ -10,10 +10,10 @@
         </li>
         <li>
           <input class="searchInput" type="text" size="30" 
-            v-model="inputKeywords" 
+            v-model="inputKeywords" id="searchKeywords"
             placeholder="Search by Keywords">
             <span v-if="keywordsEncoded && $v.keywordsEncoded.minLength">
-              <router-link class="defaultBtn" 
+              <router-link class="defaultBtn" id="searchBtn"
                 :to='{ name: "search", params: {keywords: keywordsEncoded}}' tag="button"> 
                 Search <span v-if='!$v.keywordsEncoded.minLength'>(at least 2 chars)</span>
               </router-link>
