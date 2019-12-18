@@ -15,6 +15,7 @@ Feedable News 2.0
 [JSONBin.io](https://jsonbin.io/)
 
 ## Notes for instructor
+Production app is up and runing on [Netlify](zen-mirzakhani-13df71.netlify.com).
 There are 4 "pages", **Home**, **My Channels**, **Channel**, and **Search Results**. 
 
 ### Home page
