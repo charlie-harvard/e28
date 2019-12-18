@@ -27,3 +27,9 @@ By clicking on the news source domain link, users will be redirect to the Channe
 
 ### Searching
 Searching function is implemented on the navigation bar. In order to start a search, users need to enter at least 2 charactars in the text box. This is implemented by using **Vuelidate**. On the Search Results page, Recent search keywords are displayed and linked to the corresponding results. Recent search keywords are stored locally.
+
+### Unit Test
+Expect NewsList component to display at least one news.
+
+### E2E Test
+Covers all pages and channel saving function.
