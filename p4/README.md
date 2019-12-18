@@ -26,4 +26,4 @@ My Channels displays a list of news sources that are saved. Users can remove sav
 By clicking on the news source domain link, users will be redirect to the Channel page. A list of the latest news, which come from this domain, will be displayed.
 
 ### Searching
-Searching function is implemented on the navigation bar. In order to start a search, users need to enter at least 2 charactars in the text box. On the Search Results page, Recent search keywords are displayed and linked to the corresponding results. Recent search keywords are stored locally.
+Searching function is implemented on the navigation bar. In order to start a search, users need to enter at least 2 charactars in the text box. This is implemented by using **Vuelidate**. On the Search Results page, Recent search keywords are displayed and linked to the corresponding results. Recent search keywords are stored locally.
