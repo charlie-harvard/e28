@@ -4,22 +4,26 @@
 
 Feedable News 2.0
 
+## Improvements based on P3 peer review feedback
+- On Search Results page, "Recent Searched Keywords" are linked to their result pages.
+- Removed un-used assets.
+
+
 ## Outside resources
 [News API](https://newsapi.org/docs)
 
 [JSONBin.io](https://jsonbin.io/)
 
 ## Notes for instructor
-There are 4 "pages", **Home**, **My Channels**, **Search Results**, and **Channel**. 
+There are 4 "pages", **Home**, **My Channels**, **Channel**, and **Search Results**. 
 
-On the Home page, I pull 5 top news using NewsAPI. On a popup window, I display news details and provide a button for user to add the current news source(domain). 
+### Home page
+5 top news are pulled from [News API](https://newsapi.org/docs) using **Axios**. By clicking on a news title, a modal window displaying news details will pop up. It has a button for adding the current news source to My Channles (stored in [JSONBin.io](https://jsonbin.io/)). The number of newly added channels will be shown and this is implemented by **Vuex**.
 
-On the My Channels page, I display a list of news sources that are saved on JSONBin.io. Users can remove saved channel(news source) from that list. And I use JSONBin API to update the remote JSON instance.
+### My Channels and Channels
+My Channels displays a list of news sources that are saved. Users can remove saved channels(news sources) from the list. Changes will be saved to [JSONBin.io](https://jsonbin.io/) as well.
 
-By clicking on the news source domain link, Channel page shows up. A list of latest news on this domain will display on this new page.
+By clicking on the news source domain link, users will be redirect to the Channel page. A list of the latest news, which come from this domain, will be displayed.
 
-Searching function is implemented on the navigation bar. It utilizes NewsAPI to display 20 related news on Search Results page.
-
-Finally, on Search Results page, I use localStorage to store users recent search keywords.
-
-p.s. Since I am using NewsAPI's "Developer" plan, the Feedable app can only send up to 500 requests per day. 
+### Searching
+Searching function is implemented on the navigation bar. In order to start a search, users need to enter at least 2 charactars in the text box. On the Search Results page, Recent search keywords are displayed and linked to the corresponding results. Recent search keywords are stored locally.
